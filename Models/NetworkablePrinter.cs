@@ -40,10 +40,6 @@ public class NetworkablePrinter : Printer, INetworkable
         IpAddress = string.Empty;
         IsConnected = false;
     }
-
-
-
-
     public NetworkablePrinter(string deviceId, string deviceName, int commissionYear, double price, PrinterType printerType, string ipAddress)
         : base(deviceId, deviceName, commissionYear, price, printerType)
     {

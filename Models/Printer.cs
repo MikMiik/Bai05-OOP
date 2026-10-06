@@ -3,7 +3,7 @@ namespace Bai05.Models;
 
 public class Printer : Device
 {
-    private PrinterType _printerType = PrinterType.Inkjet;
+    private PrinterType _printerType;
 
     private int _numberOfPagesPrinted = 0;
 
@@ -36,10 +36,11 @@ public class Printer : Device
 
 
 
-    public Printer(string deviceId, string deviceName, int commissionYear, double price, PrinterType printerType)
+    public Printer(string deviceId, string deviceName, int commissionYear, double price, PrinterType printerType, int numberOfPagesPrinted = 0)
         : base(deviceId, deviceName, commissionYear, price)
     {
         PrinterType = printerType;
+        NumberOfPagesPrinted = numberOfPagesPrinted;
     }
 
     public override double CalculateEstimatedAnnualMaintenanceCosts()

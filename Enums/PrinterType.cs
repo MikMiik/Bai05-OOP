@@ -4,5 +4,4 @@ public enum PrinterType
 {
     Laser,
     Inkjet,
-
 }

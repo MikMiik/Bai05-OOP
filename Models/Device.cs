@@ -71,7 +71,7 @@ public abstract class Device
         Price = price;
     }
 
-    public abstract decimal CalculateEstimatedAnnualMaintenanceCosts();
+    public abstract double CalculateEstimatedAnnualMaintenanceCosts();
     public override string ToString()
     {
         return $"DeviceId: {DeviceId}, DeviceName: {DeviceName}, CommissionYear: {CommissionYear}, Price: {Price}, Status: {Status}";

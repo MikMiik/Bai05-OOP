@@ -56,9 +56,9 @@ public class LabRoom
 
     }
 
-    public decimal CalculateAnnualMaintenanceCost()
+    public double CalculateAnnualMaintenanceCost()
     {
-        decimal totalCost = 0;
+        double totalCost = 0;
         foreach (var device in Devices)
         {
             totalCost += device.CalculateEstimatedAnnualMaintenanceCosts();
