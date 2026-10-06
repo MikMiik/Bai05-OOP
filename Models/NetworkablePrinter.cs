@@ -4,9 +4,7 @@ namespace Bai05.Models;
 
 public class NetworkablePrinter : Printer, INetworkable
 {
-    private bool _networkable = true;
     private string _ipAddress = string.Empty;
-
     private bool _isConnected = false;
 
     public string IpAddress
@@ -40,10 +38,11 @@ public class NetworkablePrinter : Printer, INetworkable
         IpAddress = string.Empty;
         IsConnected = false;
     }
-    public NetworkablePrinter(string deviceId, string deviceName, int commissionYear, double price, PrinterType printerType, string ipAddress)
-        : base(deviceId, deviceName, commissionYear, price, printerType)
+    public NetworkablePrinter(string deviceId, string deviceName, int commissionYear, double price, PrinterType printerType, int numberOfPagesPrinted, string ipAddress)
+        : base(deviceId, deviceName, commissionYear, price, printerType, numberOfPagesPrinted)
     {
         IpAddress = ipAddress;
+        Networkable = true;
     }
 
     public override double CalculateEstimatedAnnualMaintenanceCosts()

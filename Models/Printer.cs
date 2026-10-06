@@ -7,7 +7,7 @@ public class Printer : Device
 
     private int _numberOfPagesPrinted = 0;
 
-    private bool _networkable = false;
+    public bool Networkable { get; protected set; } = false;
 
 
     public PrinterType PrinterType
@@ -28,12 +28,6 @@ public class Printer : Device
             _numberOfPagesPrinted = value;
         }
     }
-
-    public bool Networkable
-    {
-        get => _networkable;
-    }
-
 
 
     public Printer(string deviceId, string deviceName, int commissionYear, double price, PrinterType printerType, int numberOfPagesPrinted = 0)
