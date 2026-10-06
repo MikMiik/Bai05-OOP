@@ -31,6 +31,7 @@ public class NetworkablePrinter : Printer, INetworkable
         }
         IpAddress = ipAddress;
         IsConnected = true;
+        Console.WriteLine($"Kết nối mạng thành công.");
     }
 
     public void Disconnect()
@@ -38,10 +39,9 @@ public class NetworkablePrinter : Printer, INetworkable
         IpAddress = string.Empty;
         IsConnected = false;
     }
-    public NetworkablePrinter(string deviceId, string deviceName, int commissionYear, double price, PrinterType printerType, int numberOfPagesPrinted, string ipAddress)
+    public NetworkablePrinter(string deviceId, string deviceName, int commissionYear, double price, PrinterType printerType, int numberOfPagesPrinted)
         : base(deviceId, deviceName, commissionYear, price, printerType, numberOfPagesPrinted)
     {
-        IpAddress = ipAddress;
         Networkable = true;
     }
 

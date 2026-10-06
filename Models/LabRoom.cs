@@ -71,6 +71,15 @@ public class LabRoom
         return [.. Devices.Where(d => d.Status == DeviceStatus.UnderMaintenance)];
     }
 
+    public void DisplayDevices()
+    {
+        Console.WriteLine($"Lab Room: {LabRoomName}, ID: {LabRoomId}");
+        foreach (var device in Devices)
+        {
+            Console.WriteLine($"- {device.DeviceName} (ID: {device.DeviceId}, Year: {device.CommissionYear}, Price: {device.Price}, Status: {device.Status})");
+        }
+    }
+
     ~LabRoom()
     {
         Console.WriteLine($"Destructor LabRoomId {LabRoomId}.");
