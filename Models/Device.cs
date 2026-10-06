@@ -1,3 +1,4 @@
+using Bai05.Enums;
 namespace Bai05.Models;
 
 public abstract class Device
@@ -6,7 +7,7 @@ public abstract class Device
     private string _deviceName = string.Empty;
     private int _commissionYear;
     private double _price;
-    private string _status = "Available";
+    private DeviceStatus _status = DeviceStatus.Active;
 
     public string DeviceId
     {
@@ -53,12 +54,11 @@ public abstract class Device
         }
     }
 
-    public string Status
+    public DeviceStatus Status
     {
         get => _status;
         set
         {
-            ArgumentException.ThrowIfNullOrWhiteSpace(value);
             _status = value;
         }
     }
