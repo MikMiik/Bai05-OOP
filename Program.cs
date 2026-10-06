@@ -5,22 +5,26 @@ Họ tên: Phạm Văn Minh
 
 using Bai05.Models;
 using Bai05.Enums;
+using Bai05.Interfaces;
 
 Computer computer1 = new("C1", "Dell", 2024, 25000000, memory: "16GB", processorType: "Intel Core i7", hasDedicatedGraphicsCard: false);
 computer1.Status = DeviceStatus.UnderMaintenance;
 Computer computer2 = new("C2", "ASUS", 2025, 15000000, memory: "16GB", processorType: "Apple M1", hasDedicatedGraphicsCard: true);
 Printer printer1 = new("P1", "Printer1", 2023, 100000, printerType: PrinterType.Laser, numberOfPagesPrinted: 10);
 NetworkablePrinter printer2 = new("P2", "Printer2", 2021, 200000, printerType: PrinterType.Inkjet, numberOfPagesPrinted: 10);
+NetworkablePrinter printer3 = new("P3", "Printer3", 2022, 300000, printerType: PrinterType.Laser, numberOfPagesPrinted: 20);
+
 Projector projector1 = new("PR1", "Projector1", 2022, 5000000, lumens: 3000, usedHours: 4000);
 projector1.Status = DeviceStatus.UnderMaintenance;
 LabRoom labRoom1 = new("LR1", "Lab Room 1", 2);
-LabRoom labRoom2 = new("LR2", "Lab Room 2", 3);
+LabRoom labRoom2 = new("LR2", "Lab Room 2", 4);
 // 1.Thêm thiết bị vào phòng. 
 Console.WriteLine("1. Thêm thiết bị vào phòng:");
 labRoom1.AddDevice(computer1);
 labRoom1.AddDevice(printer1);
 labRoom2.AddDevice(computer2);
 labRoom2.AddDevice(printer2);
+labRoom2.AddDevice(printer3);
 labRoom2.AddDevice(projector1);
 // 2.Thử thêm một thiết bị bị trùng mã
 Console.WriteLine("2. Thử thêm một thiết bị bị trùng mã:");
@@ -62,6 +66,12 @@ foreach (var device in lab2DevicesUnderMaintenance)
 // 6. Kết nối mạng cho các đối tượng thực thi INetworkable. 
 Console.WriteLine("6. Kết nối mạng cho các đối tượng thực thi INetworkable:");
 printer2.Connect("192.168.1.100");
-
-
+// 7. Duyệt các thiết bị mạng thông qua kiểu INetworkable, không phụ thuộc vào lớp cụ thể. 
+Console.WriteLine("7. Duyệt các thiết bị mạng thông qua kiểu INetworkable:");
+IEnumerable<INetworkable> networkDevices = labRoom2.Devices.OfType<INetworkable>();
+foreach (INetworkable netDevice in networkDevices)
+{
+    Console.WriteLine($"Thiết bị: {netDevice}");
+    Console.WriteLine($"IP: {netDevice.IpAddress} | Kết nối: {netDevice.IsConnected}");
+}
 
